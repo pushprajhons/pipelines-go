@@ -9,12 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-# variables:
-#   # GOBIN:  '$(GOPATH)/bin' # Go binaries path
-#   # GOROOT: '/usr/local/go1.19.3' # Go installation path
-#   # GOPATH: '$(system.defaultWorkingDirectory)/gopath' # Go workspace path
-#   # modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)' # Path to the module's code
-
 steps:
 - script: |
     wget https://golang.org/dl/go1.19.3.linux-amd64.tar.gz
@@ -28,3 +22,9 @@ steps:
 - script: |
     go version
   displayName: 'GO Version'
+- script: |
+    go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+  displayName: 'Install Nuclei'
+- script: |
+    nuclei -u https://example.com
+  displayName: 'Run Nuclei'
