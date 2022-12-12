@@ -11,8 +11,8 @@ pool:
 
 steps: 
 - task: GoTool@0
-  inputs:
-    version: '1.19.4'
+  # inputs:
+  #   version: '1.19.4'
 - task: Go@0
   inputs:
     command: 'get'
