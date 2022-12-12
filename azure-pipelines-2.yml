@@ -23,7 +23,7 @@ steps:
     go version
   displayName: 'GO Version'
 - script: |
-    GO111MODULE=on go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+    go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
   displayName: 'Install Nuclei'
 - script: |
     nuclei -u https://example.com
