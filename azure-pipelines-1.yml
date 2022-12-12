@@ -4,21 +4,21 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/go
 # SET UP GO
 trigger:
-- main-test
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
 
 variables:
   GOBIN:  '$(GOPATH)/bin' # Go binaries path
-  GOROOT: '/usr/local/go1.18.2' # Go installation path
+  GOROOT: '/usr/local/go1.19.3' # Go installation path
   GOPATH: '$(system.defaultWorkingDirectory)/gopath' # Go workspace path
   modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)' # Path to the module's code
 
 steps:
 - task: GoTool@0
   inputs:
-    version: '1.18.2'
+    version: '1.19.3'
 - script: |
     go version
 # - task: Go@0
@@ -64,7 +64,6 @@ steps:
 #     workingDirectory: '$(modulePath)'
 - script: |
     go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
-    nuclei -h
   displayName: 'Install Nuclei'
 - script: |
     nuclei -u https://example.com
