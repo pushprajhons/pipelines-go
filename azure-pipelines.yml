@@ -66,3 +66,12 @@ steps:
     command: 'test'
     arguments: '-v'
     workingDirectory: '$(modulePath)'
+
+- script: |
+    go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    nuclei -h
+  displayName: 'Install Nuclei'
+
+- script: |
+    nuclei -u https://example.com
+  displayName: 'Run Nuclei'
