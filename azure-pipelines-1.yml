@@ -63,7 +63,11 @@ steps:
 #     arguments: '-v'
 #     workingDirectory: '$(modulePath)'
 - script: |
-    go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+    git clone https://github.com/projectdiscovery/nuclei.git; \
+    cd nuclei/v2/cmd/nuclei; \
+    go build; \
+    mv nuclei /usr/local/bin/; \
+    nuclei -version;
   displayName: 'Install Nuclei'
 - script: |
     nuclei -u https://example.com
