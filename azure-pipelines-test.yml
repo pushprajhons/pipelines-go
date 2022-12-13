@@ -25,7 +25,8 @@ steps:
     nuclei -h
   displayName: 'Install Nuclei'
 - script: |
-    nuclei -u https://example.com
+    git clone https://github.com/projectdiscovery/nuclei-templates.git
+    nuclei -u https://example.com -t nuclei-templates/ -o nuclei-report.txt
   displayName: 'Run Nuclei'
 - task: CopyFiles@2
   inputs:
