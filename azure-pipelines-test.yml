@@ -32,7 +32,7 @@ steps:
     dir
   displayName: 'Download Nuclei Template'
 - script: |
-    nuclei -u https://example.com -t nuclei-templates/ -o nuclei-report/nuclei-report.txt
+    nuclei -u https://example.com -t nuclei-templates/ -o nuclei-report.txt
   displayName: 'Run Nuclei'
 - task: CopyFiles@2
   inputs:
