@@ -16,15 +16,6 @@ steps:
 - script: |
     go version
   displayName: 'Go Version'
-- script: dir
-  workingDirectory: $(Agent.BuildDirectory)
-  displayName: List contents of a folder
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo  '$(System.DefaultWorkingDirectory)'
-      dir
-      dir subfoldername
 - script: |
     git clone https://github.com/projectdiscovery/nuclei.git; \
     cd nuclei/v2/cmd/nuclei; \
